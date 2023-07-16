@@ -23,14 +23,14 @@ class Solution
 
     void process()
     {
-        this->recursive(this->n - 1);
+        this->recursive();
     }
 
-    void recursive(int i)
+    void recursive()
     {
         int x = this->q.front();
         this->q.pop();
-        if(i > 0) this->recursive(--i);
+        if(!this->q.empty()) this->recursive();
         this->q.push(x);
     }
 
