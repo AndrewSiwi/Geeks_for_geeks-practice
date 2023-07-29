@@ -31,7 +31,16 @@ class Solution
 
   Solution()
   {
-    
+    string xs;
+    getline(cin, xs);
+
+    istringstream iss;
+    iss.str(xs);
+
+    for(char x; iss >> x;)
+    {
+      cout << iss.str() << "\n";
+    }
   }
 
   void process()
@@ -41,11 +50,11 @@ class Solution
 
   void recursive(Node* node, int height)
   {
-     if(node == NULL) return;
+    if(node == NULL) return;
        
-     if(height > this->height) { this->ret.push_back(node->data); this->height++; }
-     this->recursive(node->right, ++height);
-     this->recursive(node->left, height);
+    if(height > this->height) { this->ret.push_back(node->data); this->height++; }
+    this->recursive(node->right, ++height);
+    this->recursive(node->left, height);
   }
 
   void print()
