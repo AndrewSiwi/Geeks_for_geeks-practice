@@ -24,23 +24,67 @@ struct Node
 class Solution
 {
   int n, height;
-  Node* root;
+  Node* root = NULL;
   vector<int> ret;
 
   public:
 
   Solution()
   {
-    string xs;
-    getline(cin, xs);
-
-    istringstream iss;
-    iss.str(xs);
-
-    for(char x; iss >> x;)
+    int t;
+    string tc;
+    getline(cin, tc);
+    t=stoi(tc);
+    //cout << t << endl;
+    while(t--)
     {
-      cout << iss.str() << "\n";
+      string s;
+      getline(cin, s);
+      this->buildTree(s);
+          
+      this->process();
+      this->print();
     }
+  }
+
+  void buildTree(string str)
+  {
+    if(str.length() == 0 || str[0] == 'N') return;
+
+    vector<string> ip;
+    istringstream iss(str);
+    for(string str; iss >> str;) ip.push_back(str);
+
+    Node* root = new Node(stoi(ip[0]));
+    queue<Node*> queue;
+    queue.push(root);
+
+    int i = 1;
+    while(!queue.empty() && i < ip.size())
+    {
+      Node* currNode = queue.front();
+      queue.pop();
+
+      string currVal = ip[i];
+      if(currVal != "N")
+      {
+        currNode->left = new Node(stoi(currVal));
+        queue.push(currNode->left);
+      }
+
+      i++;
+      if(i >= ip.size()) break;
+      currVal = ip[i];
+            
+      if(currVal != "N")
+      {
+        currNode->right = new Node(stoi(currVal));
+        queue.push(currNode->right);
+      }
+      i++;
+    }
+        
+    this->root = root;
   }
 
   void process()
@@ -74,8 +118,8 @@ int main(int argc, char* argv[])
   cin.tie(NULL);
 
   Solution* sl = new Solution();
-  sl->process();
-  sl->print();
+  //sl->process();
+  //sl->print();
 
   return 0;
 }
