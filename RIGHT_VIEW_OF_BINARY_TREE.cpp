@@ -34,7 +34,7 @@ class Solution
     int t;
     string tc;
     getline(cin, tc);
-    t=stoi(tc);
+    t = stoi(tc);
     //cout << t << endl;
     while(t--)
     {
