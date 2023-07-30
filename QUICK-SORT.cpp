@@ -7,18 +7,8 @@ void quicksort(int* arr, int left, int right)
     if(left < right)
     {
         int m = left;
-        for(int i = left + 1; i <= right; i++)
-        {
-            if(arr[i] < arr[left])
-            {
-                int tmp = arr[i];
-                arr[i] = arr[++m];
-                arr[m] = tmp;
-            }
-        }
-        int tmp = arr[left];
-        arr[left] = arr[m];
-        arr[m] = tmp;
+        for(int i = left + 1; i <= right; i++) if(arr[i] < arr[left]) swap(arr[i], arr[++m]);
+        swap(arr[left], arr[m]);
 
         quicksort(arr, left, m - 1);
         quicksort(arr, m + 1, right);
