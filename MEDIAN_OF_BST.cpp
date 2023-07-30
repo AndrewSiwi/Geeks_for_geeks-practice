@@ -2,9 +2,9 @@
 
 using namespace std;
 
-#define n 10
-
 #define STEROID_NUMBER long long
+
+#define N 10
 
 #define ITER_ARR(start, end) for(int i = (start); i < (end); i++)
 #define ITER_ARR_ALL ITER_ARR(0, this->n)
