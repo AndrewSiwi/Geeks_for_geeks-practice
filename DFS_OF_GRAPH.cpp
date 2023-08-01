@@ -45,8 +45,7 @@ class Solution
             else
             {
                 this->was.insert(current);
-                this->ret.push_back(current);
-        
+                this->ret.push_back(current);        
                 for(int i = this->adj[current].size() - 1; i >= 0; i--) nodes.push(this->adj[current][i]);
             }
         }
