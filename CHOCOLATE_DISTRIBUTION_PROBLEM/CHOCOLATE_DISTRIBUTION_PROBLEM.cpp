@@ -7,7 +7,7 @@ using namespace std;
 #define ITER(start, var, eq, end, diff) for(int var = (start); var eq (end); var += (diff))
 #define ITER_FIX(start, var, end) ITER(start, var, <, end, 1)
 #define ITER_ARR(var) ITER(0, var, <, this->n, 1)
-#define ITER_ARR_REVERSE(start, var, end) ITER(start, var, >=, end, -1)
+#define ITER_REVERSE(start, var, end) ITER(start, var, >=, end, -1)
 
 #define ITER_CONT(var, cont) for(auto& var: cont)
 #define ITER_CONT_IT(var, cont) for(auto var = cont.begin(); var != cont.end();)
