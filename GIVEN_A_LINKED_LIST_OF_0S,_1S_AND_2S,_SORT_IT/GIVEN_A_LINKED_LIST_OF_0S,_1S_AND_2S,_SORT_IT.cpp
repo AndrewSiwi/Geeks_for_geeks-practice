@@ -2,27 +2,50 @@
 
 using namespace std;
 
-#define ITER_ARR(start, end) for(int = (start); i < (end); i++)
+#define ITER_ARR(start, end) for(int i = (start); i < (end); i++)
 #define ITER_ARR_ALL ITER_ARR(0, this->n)
 #define ITER_ARR_REVERSE for(int i = this->n - 1; i >= 0; i--)
 
 #define N 10
 
+struct Node
+{ 
+  int data;
+  Node* next;
+
+  Node(int x)
+  {
+    data = x;
+    next = NULL;
+  }
+};
+
 class Solution
 {
-  int n, arr[N];
+  int n;
+  Node* head;
 
   public:
 
   Solution()
   {
     cin >> this->n;
-    int n = this->n;
-    while(n--)
-    {
-      int x;
-      cin >> x;
-      this->arr[this->n - n - 1] = x;
+    int n, value, i;
+    // scanf("%d",&n);
+    n = this->n;
+    struct Node *temp;
+    for (i = 0; i < n; i++) {
+        cin >> value;
+
+        if (i == 0) {
+            temp = new Node(value);
+            this->head = temp;
+            continue;
+        } else {
+            temp->next = new Node(value);
+            temp = temp->next;
+            temp->next = NULL;
+        }
     }
   }
 
@@ -32,7 +55,7 @@ class Solution
         
         for(int i = 0; i < 3; i++)
         {
-            Node* current = head;
+            Node* current = this->head;
             while(current != NULL)
             {
                 if(current->data == i) vals.push_back(current->data);
@@ -48,15 +71,17 @@ class Solution
             current_end->next = new Node(vals[i]);
             current_end = current_end->next;
         }
-        
-        return start;
+
+        this->head = start;
   }
 
   void print()
   {
+    Node* x = this->head;
     ITER_ARR_ALL
     {
-      cout << this->arr[i] << " ";
+      cout << x->data << " ";
+      x = x->next;
     }
     cout << "\n";
   }  
