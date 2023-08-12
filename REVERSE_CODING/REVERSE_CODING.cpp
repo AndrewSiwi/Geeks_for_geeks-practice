@@ -44,7 +44,6 @@ class Solution
     void process()
     {
         this->ret = (((STEROID_NUMBER)(this->n + 1) * this->n) / 2) % 1000000007;
-        
     }
 
     void print()
