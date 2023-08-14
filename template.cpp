@@ -1,4 +1,4 @@
-#include  <bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -9,10 +9,10 @@ using namespace std;
 #define ITER_ARR(var) ITER_FIX(var, 0, this->n)
 #define ITER_REVERSE(var, start, end) ITER(var, start, >=, end, -1)
 
-#define ITER_CONT(var, cont) for(auto& var: cont)
-#define ITER_CONT_IT(var, cont) for(auto var = cont.begin(); var != cont.end();)
+#define ITER_CONT(var, cond) for(auto& var: cond)
+#define ITER_CONT_IT(var, cond) for(auto var = cond.begin(); var != cond.end();)
 
-#define N 10000
+#define N 10
 
 class Solution
 {
@@ -31,47 +31,22 @@ class Solution
 
     private: int ct;
 
-    int n, arr[N] = { 0 }, ret = 0;
-    vector<int> subs;
 
 
     public: Solution(int ct)
     {
         this->ct = ct;
 
-        cin >> this->n;
-        int n = this->n;
-        while(n--)
-        {
-            int x;
-            cin >> x;
-            this->arr[this->n - n - 1] = x;
-        }
+
     }
 
     void process()
     {
-        ITER_ARR(i)
-        {
-            bool higher = true;
-            ITER_FIX(j, 0, this->subs.size())
-            {
-                if(this->arr[i] <= this->subs[j])
-                {
-                    this->subs[j] = this->arr[i];
-                    higher = false;
-                    break;
-                }
-            }
-            if(higher) this->subs.push_back(this->arr[i]);
-        }
 
-        this->ret = this->subs.size();
     }
 
     void print()
     {
-        cout << this->ret << "\n";
         //cout << "\n";
     }
 };
