@@ -1,6 +1,10 @@
 #include <bits/stdc++.h>
 
+#define STEROID_NUMBER long long
+
 #define I_MAX 10000000
+
+#define ITER(var, start, cond, end, diff) for(int var = start; var cond end; var += diff)
 
 using namespace std;
 
@@ -8,7 +12,7 @@ class Solution
 {
     public:
         int n, m;
-        int arr1[I_MAX], arr2[I_MAX];
+        STEROID_NUMBER arr1[I_MAX], arr2[I_MAX];
 
     Solution()
     {
@@ -19,7 +23,7 @@ class Solution
 
         while(n--)
         {
-            int i;
+            STEROID_NUMBER i;
             cin >> i;
             this->arr1[this->n - n - 1] = i;
         }
@@ -34,25 +38,11 @@ class Solution
 
     void process()
     {
-        int i, j, k = this->n - 1;
-        i = j = 0;
-
-        while(i <= k && j < this->m)
-        {
-            if(this->arr1[i] > this->arr2[j])
-            {
-                int tmp = this->arr1[k];
-                this->arr1[k--] = this->arr2[j];
-                this->arr2[j++] = tmp;
-            }
-            else
-            {
-                i++;
-            }
-        }
-
-        sort(arr1, arr1 + this->n);
-        sort(arr2, arr2 + this->m);
+        int n2 = this->n;
+        ITER(i, (0), <, this->m && n2--, 1) if(this->arr1[n2] > this->arr2[i]) swap(this->arr1[n2], this->arr2[i]);
+            
+        sort(this->arr1, this->arr1 + this->n);
+        sort(this->arr2, this->arr2 + this->m);
     }
 
     void print()
