@@ -9,8 +9,8 @@ using namespace std;
 #define ITER_ARR(var) ITER_FIX(var, 0, this->n)
 #define ITER_REVERSE(var, start, end) ITER(var, start, >=, end, -1)
 
-#define ITER_CONT(var, cond) for(auto& var: cond)
-#define ITER_CONT_IT(var, cond) for(auto var = cond.begin(); var != cond.end();)
+#define ITER_CONT(var, cont) for(auto& var: cont)
+#define ITER_CONT_IT(var, cont) for(auto var = cont.begin(); var != cont.end();)
 
 #define N 10
 
@@ -30,7 +30,6 @@ class Solution
     }
 
     private: int ct;
-
 
 
     public: Solution(int ct)
