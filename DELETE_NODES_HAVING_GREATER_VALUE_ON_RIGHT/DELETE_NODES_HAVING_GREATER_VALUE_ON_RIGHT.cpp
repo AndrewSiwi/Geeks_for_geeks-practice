@@ -79,9 +79,7 @@ class Solution
             {
                 Node* tmp = this->head;
                 while(current != tmp->next && tmp->next->data >= current->data)
-                {
                     tmp = tmp->next;
-                }
                 tmp->next = current;
             }
 
