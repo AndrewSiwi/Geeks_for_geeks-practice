@@ -33,22 +33,46 @@ class Solution
 
     private: int ct;
 
-    int n, arr[N], k;
+    int n, arr[N], k, ret;
 
     public: Solution(int ct)
     {
         this->ct = ct;
 
-
+        cin >> this->n;
+        int n = this->n;
+        while(n--)
+        {
+            int x;
+            cin >> x;
+            this->arr[this->n - n - 1] = x;
+        }
+        cin >> this->k;
     }
 
     void process()
     {
+        this->ret = this->recursive(0, this->n - 1, this->k);
+    }
 
+    int recursive(int l, int r, int k)
+    {
+        int pivot = this->arr[r], pos = l;
+        ITER_FIX(j, l, r)
+            if(this->arr[j] <= pivot)
+                swap(this->arr[j], this->arr[pos++]);
+        swap(this->arr[r], this->arr[pos]);
+
+        if(pos - l + 1 == k)
+            return this->arr[pos];
+        if(pos - l + 1 > k)
+            return this->recursive(l, pos - 1, k);
+        return this->recursive(pos + 1, r, k - pos + l - 1);
     }
 
     void print()
     {
+        cout << this->ret << "\n";
         //cout << "\n";
     }
 };
