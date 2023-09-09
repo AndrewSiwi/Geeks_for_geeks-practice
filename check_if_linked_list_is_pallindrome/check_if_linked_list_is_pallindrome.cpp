@@ -11,7 +11,7 @@ using namespace std;
 
 #define iter_cont(var, cont) for(auto& var: cont)
 #define iter_cont_it(var, cont, comm) for(auto var = cont.begin(); var != cont.end(); comm)
-#define iter_cont_revit(var, cont, comm) for(auot var = cont.rbegin(); var != cont.rend(); comm)
+#define iter_cont_revit(var, cont, comm) for(auto var = cont.rbegin(); var != cont.rend(); comm)
 
 const int N = 1e1;
 
